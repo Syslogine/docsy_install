@@ -41,7 +41,3 @@ sleep 3
 
 printf "${RED} **** go back to sys_docs folder **** ${NC}"
 cd ../..
-sleep 3
-
-printf "${RED} **** testing time **** ${NC}"
-hugo server
