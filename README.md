@@ -27,5 +27,9 @@ npm install
 ```
 
 ```bash
+npm fund
+```
+
+```bash
 npm run serve
 ```
