@@ -11,9 +11,15 @@ so i thought this can be easier and faster... So this is the reason why this doe
 5.  moves after this to the themes folder and install the needed npm packages
 6.  and then it's a but done i guess
 
+the sleep and text in the file are more for you.. as i already know what it does..
+
+
+
+
 script to install clean hugo:docsy
 
-
+### Download
+Uhm i guess you can just download this script to a mac/linux operating system and run the script... And maybe it works in windows 11 aswell because it has linux commands... ( not tested yet )
 ```bash
 bash test.sh
 ```
