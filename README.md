@@ -1,53 +1,55 @@
-# docsy_install
+# Docsy Install Script
 
-I kinda made this script because im lazy and i destroyed by hugo/doscy allot...
+This script automates the installation of a clean Hugo site with the Docsy theme.
 
-so i thought this can be easier and faster... So this is the reason why this does exist.....
+## Usage
 
-1.  it create a hugo site with name `sys_docs`
-2.  enter the folder
-3.  creates a git init
-4.  download the docsy theme as a submodule
-5.  moves after this to the themes folder and install the needed npm packages
-6.  and then it's a but done i guess
+### Download and Run the Script
 
-the sleep and text in the file are more for you.. as i already know what it does..
-
-
-
-
-script to install clean hugo:docsy
-
-### Download
-Uhm i guess you can just download this script to a mac/linux operating system and run the script... And maybe it works in windows 11 aswell because it has linux commands... ( not tested yet )
 ```bash
-bash test.sh
+bash <(curl -s https://raw.githubusercontent.com/Syslogine/docsy_install/main/docsy_install.sh)
 ```
 
-## Start
+### Start the Hugo Server
 
-### start clean
+Navigate to the Sys_Docs folder:
+
 ```bash
 cd sys_docs
 ```
+
+Start the Hugo server:
 
 ```bash
 hugo server
 ```
 
-### start example
+### Example Usage with Docsy Theme
+
+Navigate to the Docsy user guide:
+
 ```bash
 cd sys_docs/themes/docsy/userguide
 ```
+
+Install required npm packages:
 
 ```bash
 npm install
 ```
 
+Check for funding opportunities:
+
 ```bash
 npm fund
 ```
 
+Start the Docsy example server:
+
 ```bash
 npm run serve
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

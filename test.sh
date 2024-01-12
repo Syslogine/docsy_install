@@ -1,43 +1,54 @@
 #!/bin/bash
 
+# docsy_install.sh
+# This script automates the installation of a clean Hugo site with the Docsy theme.
+# It creates the 'sys_docs' site, initializes a Git repository, adds Docsy as a submodule,
+# updates the site configuration, and installs npm packages.
+
 RED='\033[0;31m'
 YLLW='\033[0;33m'
 NC='\033[0m\n'
 
-printf "${YLLW} **** SYSLOGINE DOCS **** ${NC}"
-sleep 2
+print_message() {
+    printf "${RED}$1${NC}"
+    sleep 3
+}
 
-printf "${RED} **** let's create sys_docs with hugo **** ${NC}"
-hugo new site sys_docs
+print_message "**** SYSLOGINE DOCS ****"
+print_message "**** let's create sys_docs with hugo ****"
+hugo new site sys_docs || exit 1
+
+print_message "**** enter sys_docs site ****"
+cd sys_docs || exit 1
 sleep 3
 
-printf "${RED} **** enter sys_docs site **** ${NC}"
-cd sys_docs
+print_message "**** create git init ****"
+git init || exit 1
 sleep 3
 
-printf "${RED} **** create git init **** ${NC}"
-git init
+print_message "**** download docsy theme as submodule ****"
+THEME_REPO="https://github.com/Syslogine/docsy"
+git submodule add "$THEME_REPO" themes/docsy || exit 1
 sleep 3
 
-printf "${RED} **** download docsy theme as submodule **** ${NC}"
-git submodule add https://github.com/Syslogine/docsy themes/docsy
+print_message "**** add doscy as theme in config ****"
+echo "theme = 'docsy'" >> config.toml || exit 1
 sleep 3
 
-printf "${RED} **** add doscy as theme in config **** ${NC}"
-echo "theme = 'docsy'" >> config.toml
+print_message "**** now we go to doscy theme folder ****"
+cd themes/docsy || exit 1
 sleep 3
 
-printf "${RED} **** now we go to doscy theme folder **** ${NC}"
-cd themes/docsy
+print_message "**** to be sure ****"
+if ! npm install; then
+    echo "Error: npm install failed."
+    exit 1
+fi
 sleep 3
 
-printf "${RED} **** to be sure **** ${NC}"
-npm install
+print_message "**** needs funding ****"
+npm fund || exit 1
 sleep 3
 
-printf "${RED} **** needs funding **** ${NC}"
-npm fund
-sleep 3
-
-printf "${RED} **** go back to sys_docs folder **** ${NC}"
+print_message "**** go back to sys_docs folder ****"
 cd ../..
